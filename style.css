@@ -1,0 +1,408 @@
+:root {
+    --bg-color: #1a1a1a;
+    --card-color: #2e2e2e;
+    --text-color: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --header-footer-color: #222;
+    --border-color: #333;
+    --accent-color: #ff4136;
+    /* refined header gradients */
+    --header-grad-start: rgba(255,107,90,0.12);
+    --header-grad-end: rgba(255,64,38,0.04);
+    --header-text-grad-start: #ffdcd4;
+    --header-text-grad-end: #ff7a55;
+}
+
+.light-theme {
+    --bg-color: #f9f9f9;
+    --card-color: #ffffff;
+    --text-color: #333;
+    --text-secondary: #666;
+    --header-footer-color: #ffffff;
+    --border-color: #ddd;
+    --accent-color: #d90000; /* Leichter Akzent für Light Mode */
+    --header-grad-start: rgba(255,160,150,0.06);
+    --header-grad-end: rgba(255,140,130,0.02);
+    --header-text-grad-start: #ff9b88;
+    --header-text-grad-end: #d90000;
+}
+
+/* ABSCHNITT 0: ALLGEMEINE STYLES */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ff8c85;
+}
+
+.intro {
+    font-size: 1.1em;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+@keyframes border-glow {
+    0% { border-color: var(--accent-color); box-shadow: 0 0 10px rgba(255, 65, 54, 0.0); }
+    50% { border-color: #ff8c85; box-shadow: 0 0 20px rgba(255, 65, 54, 0.4); } 
+    100% { border-color: var(--accent-color); box-shadow: 0 0 10px rgba(255, 65, 54, 0.0); }
+}
+
+.site-header {
+    background-color: var(--header-footer-color);
+    padding: 20px 0;
+    border-bottom: 2px solid var(--accent-color);
+    text-align: center;
+    animation: border-glow 4s ease-in-out infinite; 
+}
+
+.header-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 22px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 1.5px;
+    background: linear-gradient(90deg, var(--header-grad-start), var(--header-grad-end));
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    backdrop-filter: blur(6px) saturate(120%);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.32);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 2.6em;
+    color: var(--accent-color); /* fallback */
+    background: linear-gradient(90deg, var(--header-text-grad-start), var(--header-text-grad-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: var(--accent-color);
+}
+
+.site-header p {
+    margin: 5px 0 20px 0;
+    color: var(--text-secondary);
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    color: var(--text-color);
+    padding: 8px 10px;
+    display: block;
+    border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+
+.main-nav .buy-link a {
+    color: #fff !important; 
+    background-color: var(--accent-color);
+    border-radius: 4px;
+    padding: 10px 18px;
+    transition: background-color 0.3s, transform 0.3s;
+    border-bottom: none !important;
+}
+
+.main-nav .buy-link a:hover {
+    background-color: #cc352d;
+    transform: scale(1.05);
+}
+
+
+.category-section {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-section:last-child {
+    border-bottom: none;
+}
+
+.course-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.course-card {
+    background-color: var(--card-color);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 3px solid var(--accent-color);
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.course-card h3 {
+    margin-top: 0;
+    color: var(--text-color);
+    font-size: 1.4em;
+}
+
+.course-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.small-button {
+    display: inline-block;
+    background-color: var(--text-secondary);
+    color: var(--bg-color);
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.small-button:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.buy-button {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block;
+}
+
+.buy-button:hover {
+    background-color: #cc352d;
+    transform: translateY(-2px);
+}
+
+
+
+.expert-statement {
+    text-align: center;
+    padding: 30px 50px;
+}
+
+.service-block {
+    background-color: var(--card-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+}
+
+
+/* ABSCHNITT 4: ABLAUF & THEMENÜBERSICHT STYLES */
+
+/* Anpassung der Zwei-Spalten-Struktur für die Übersicht und den Ablauf */
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+/* Liste ohne standardmäßigen Punkt (für Themenübersicht) */
+.clean-list {
+    list-style: none;
+    padding: 0;
+}
+
+.clean-list li {
+    /* Styling für die Themenübersicht */
+    background-color: var(--card-color);
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 4px;
+    font-size: 0.95em;
+    transition: transform 0.2s;
+}
+
+.clean-list li:hover {
+    transform: translateX(5px);
+    background-color: #383838;
+}
+
+/* Speziell für die Ablauf-Liste im Service-Block (mit Checkmark oder Nummerierung) */
+.service-block ol.clean-list {
+    padding-left: 25px;
+    list-style: decimal; /* Stellt die Nummerierung wieder her */
+}
+.service-block ol.clean-list li {
+    background-color: transparent;
+    border-left: none;
+    padding: 0;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+.service-block ol.clean-list li strong {
+    color: var(--accent-color);
+}
+.service-block ol.clean-list li:hover {
+    transform: none;
+    background-color: transparent;
+}
+
+
+/* ABSCHNITT 5: FOOTER */
+.site-footer {
+    background-color: var(--header-footer-color);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9em;
+}
+
+.site-footer a {
+    color: var(--text-secondary);
+}
+
+.site-footer a:hover {
+    color: var(--accent-color);
+}
+
+
+/* ... (REST DES CSS-CODES BLEIBT UNVERÄNDERT) ... */
+
+
+/* ABSCHNITT 6: RESPONSIVE ANPASSUNGEN (Optimiert) */
+
+/* 1. Tablet Landscape & Größere Geräte (Max 1024px) */
+@media (max-width: 1024px) {
+    /* Engere Ränder für größere Bildschirme */
+    .content-container {
+        padding: 20px 30px;
+    }
+    /* 3-Spalten-Layouts werden flexibler, falls der Platz eng wird */
+    .course-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+        gap: 20px;
+    }
+}
+
+/* 2. Tablet Portrait (Max 768px) */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 15px; /* Noch engere Ränder für Tablets */
+    }
+    
+    /* Wichtige 2-Spalten-Layouts (z.B. Live-Support, Ablauf, Themenliste) stapeln */
+    .two-column-layout {
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+
+    /* course-list geht zu maximal 2 Spalten */
+    .course-list {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    
+    .category-section h2 {
+        font-size: 1.8em;
+    }
+}
+
+/* 3. Mobile (Max 600px) */
+@media (max-width: 600px) {
+    /* Header: Schriftgröße reduzieren */
+    .site-header h1 {
+        font-size: 2.2em;
+    }
+    .site-header p {
+        font-size: 1em;
+    }
+    
+    /* Navigation: Vertikal stapeln und Klickfläche vergrößern */
+    .main-nav ul {
+        flex-direction: column; 
+        align-items: center; 
+        padding: 0;
+        border-top: none;
+    }
+    .main-nav li {
+        margin: 5px 0;
+        width: 90%; 
+        text-align: center;
+    }
+    .main-nav a {
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    /* Course Cards: Nur noch eine Spalte */
+    .course-list {
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+    
+    /* Buttons verkleinern */
+    .large-button {
+        font-size: 1.1em;
+        padding: 12px 20px;
+    }
+}
+
+/* 4. Extra Small Mobile (Max 400px) */
+@media (max-width: 400px) {
+    .site-header h1 {
+        font-size: 1.8em;
+    }
+    .category-section h2 {
+        font-size: 1.5em;
+    }
+}
